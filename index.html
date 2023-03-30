@@ -1,49 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
-    <title>Todo Vue</title>
-  </head>
-  <body>
-    <div id="app">
-      <div class="container-fluid d-flex justify-content-center">
-        <div class="card" style="width: 40rem;">
-          <img class="card-img-top" src="img/mainimage.webp" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title text-center fw-bold fs-1 text-uppercase">Cosa farò oggi</h5>
-          </div>
-          <ul class="list-group list-group-flush">
-            <transition-group name="listeffect">
-              <li :key="index" ref="todolist" :class="thing.done ? 'done': ''" v-for="thing,index in thingsToDo" @click="checked(index)" class="list-group-item todo-item text-white d-flex justify-content-between">
-                <div class="item d-flex justify-content-center align-items-center">
-                  <span id="todotext" class="fs-4 fw-medium">{{thing.todo}}</span>
-                </div>
-                <div class="detele-button">
-                  <button @click.stop="deleteList(index)" type="button" class="btn btn-danger">
-                    <i class="fs-5 fa-regular fa-circle-xmark"></i>
-                  </button>
-                </div>
-              </li>
-            </transition-group>
-            <li id="add" class="list-group-item d-flex justify-content-center">
-              <div class="input-group w-75">
-                <input @keyup.enter="insert " type="text" v-model="text" class="form-control" placeholder="Cose da fare">
-                <button @click="insert" class="btn btn-success " type="button" id="button-addon2">Aggiungi</button>
-              </div>
-          </ul>
-          <div v-if="error" class="showerror bg-danger text-white text-center text-uppercase ">Inserisci almeno tre caratteri!</div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css">
+  <title>Todo Vue</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container-fluid d-flex justify-content-center">
+      <div class="card" style="width: 40rem;">
+        <img class="card-img-top" src="img/mainimage.webp" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title text-center fw-bold fs-1 text-uppercase">Cosa farò oggi</h5>
         </div>
+        <ul class="list-group list-group-flush">
+          <transition-group name="listeffect">
+            <li v-if="thingsToDo.length === 0"
+              class="list-group-item text-white  text-black text-center fs-3 bg-danger text-uppercase">Un bel niente!
+            </li>
+            <li :key="index" ref="todolist" :class="thing.done ? 'done': ''" v-for="thing,index in thingsToDo"
+              @click="checked(index)" class="list-group-item todo-item text-white d-flex justify-content-between">
+              <div class="item d-flex justify-content-center align-items-center">
+                <span id="todotext" class="fs-4 fw-medium">{{thing.todo}}</span>
+              </div>
+              <div class="detele-button">
+                <button @click.stop="deleteList(index)" type="button" class="btn btn-danger">
+                  <i class="fs-5 fa-regular fa-circle-xmark"></i>
+                </button>
+              </div>
+            </li>
+          </transition-group>
+          <li id="add" class="list-group-item d-flex justify-content-center">
+            <div class="input-group w-75">
+              <input @keyup.enter="insert " type="text" v-model="text" class="form-control" placeholder="Cose da fare">
+              <button @click="insert" class="btn btn-success " type="button" id="button-addon2">Aggiungi</button>
+            </div>
+        </ul>
+        <div v-if="error" class="showerror bg-danger text-white text-center text-uppercase ">Inserisci almeno tre
+          caratteri!</div>
       </div>
     </div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
 </html>
