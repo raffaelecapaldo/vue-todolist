@@ -10,11 +10,17 @@ body {
 .done {
     background-color: rgba(128, 128, 128, 0.445)!important;
     text-decoration: line-through;
-    color: grey;
+    color: grey!important;
 }
 
 .todo-item {
     cursor: pointer;
+}
+
+#todotext {
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+             
 }
 
 #todotext:first-letter {
@@ -35,4 +41,8 @@ body {
 
 #add {
     background-color: rgba(50, 52, 87, 0.89)
+}
+
+.fa-circle-xmark {
+    vertical-align: middle;
 }
