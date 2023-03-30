@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Todo Vue</title>
 </head>
@@ -20,15 +23,15 @@
                     <h5 class="card-title text-center fw-bold fs-1 text-uppercase">Cosa farò oggi</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li :class="thing.done ? 'done': ''" v-for="thing,index in thingsToDo" @click="checked(index)"
-                        class="list-group-item todo-item d-flex justify-content-between">
+                    <li ref="todolist" :class="thing.done ? 'done': ''" v-for="thing,index in thingsToDo" @click="checked(index)"
+                        class="list-group-item todo-item text-black d-flex justify-content-between">
                         <div class="item d-flex justify-content-center align-items-center">
                             <span id="todotext" class="fs-4 fw-medium">{{thing.todo}}</span>
                         </div>
                         <div class="detele-button">
-                            <button @click="deleteList(index)" type="button" class="btn btn-danger">Cancella</button>
+                            <button @click.stop="deleteList(index)" type="button" class="btn btn-danger">Cancella</button>
                         </div>
-                    <li class="list-group-item d-flex justify-content-center">
+                    <li id="add"class="list-group-item d-flex justify-content-center">
                         <div class="input-group w-50">
                             <input @keyup.enter="insert " type="text" v-model="text" class="form-control"
                                 placeholder="Cose da fare">
@@ -40,6 +43,7 @@
                 </ul>
             </div>
         </div>
+    </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/script.js"></script>
 </body>
