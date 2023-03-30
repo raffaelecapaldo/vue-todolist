@@ -22,7 +22,7 @@ createApp({
                     done: false
                 },
                 {
-                    todo: "mangiare la colazione",
+                    todo: "pranzare",
                     done: false
                 }
             ],
