@@ -1,0 +1,59 @@
+* {
+    transition: 0.2s;
+}
+
+body {
+    background-image: linear-gradient(135deg, #FAD7A1 10%, #E96D71 100%);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.done {
+    background-color: rgba(128, 128, 128, 0.445) !important;
+    text-decoration: line-through;
+    color: grey !important;
+}
+
+.todo-item {
+    cursor: pointer;
+}
+
+#todotext {
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+        1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+
+}
+
+#todotext:first-letter {
+    text-transform: capitalize
+}
+
+.notdone {
+    cursor: pointer;
+}
+
+.card {
+    background-color: #2a9d8f;
+}
+
+.list-group {
+    background-color: #264653;
+}
+
+#add {
+    background-color: rgba(50, 52, 87, 0.89)
+}
+
+.fa-circle-xmark {
+    vertical-align: middle;
+}
+
+/* TRANSITION VUE JS */
+
+.listeffect-enter-active {
+    transition: all 0.5s ease;
+}
+
+.listeffect-enter-from {
+    opacity: 0;
+    transform: translateX(30px);
+}
