@@ -1,0 +1,17 @@
+.done {
+    background-color: rgba(128, 128, 128, 0.445);
+    text-decoration: line-through;
+    color: grey;
+}
+
+.todo-item {
+    cursor: pointer;
+}
+
+#todotext:first-letter {
+    text-transform: capitalize
+}
+
+.notdone {
+    cursor: pointer;
+}
