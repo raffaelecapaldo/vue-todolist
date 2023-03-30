@@ -42,6 +42,7 @@ createApp({
             }
             this.thingsToDo.push(newTodo);
             this.text = "";
+            this.error=false;
             setTimeout(this.todoColor) //Usato setTimeout per rallentare di un minimo l'esecuzione, altriimenti
             //l'ultimo li sarebbe rimasto bianco
 
