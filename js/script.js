@@ -47,8 +47,8 @@ createApp({
             //l'ultimo li sarebbe rimasto bianco
 
         },
-        deleteList() {
-            this.thingsToDo.splice(this.index, 1)
+        deleteList(index) {
+            this.thingsToDo.splice(index, 1)
         },
         checked(index) {
             if (this.thingsToDo[index].done === false) { //Se done è falso
