@@ -49,13 +49,11 @@ body {
 
 /* TRANSITION VUE JS */
 
-.listeffect-enter-active,
-.listeffect-leave-active {
+.listeffect-enter-active {
     transition: all 0.5s ease;
 }
 
-.listeffect-enter-from,
-.listeffect-leave-to {
+.listeffect-enter-from {
     opacity: 0;
     transform: translateX(30px);
 }
