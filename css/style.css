@@ -1,16 +1,16 @@
 * {
-    transition:0.2s;
+    transition: 0.2s;
 }
 
 body {
-    background-image: linear-gradient( 135deg, #FAD7A1 10%, #E96D71 100%);
+    background-image: linear-gradient(135deg, #FAD7A1 10%, #E96D71 100%);
     font-family: 'Montserrat', sans-serif;
 }
 
 .done {
-    background-color: rgba(128, 128, 128, 0.445)!important;
+    background-color: rgba(128, 128, 128, 0.445) !important;
     text-decoration: line-through;
-    color: grey!important;
+    color: grey !important;
 }
 
 .todo-item {
@@ -19,8 +19,8 @@ body {
 
 #todotext {
     text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
-             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
-             
+        1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+
 }
 
 #todotext:first-letter {
@@ -45,4 +45,17 @@ body {
 
 .fa-circle-xmark {
     vertical-align: middle;
+}
+
+/* TRANSITION VUE JS */
+
+.listeffect-enter-active,
+.listeffect-leave-active {
+    transition: all 0.5s ease;
+}
+
+.listeffect-enter-from,
+.listeffect-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
 }
